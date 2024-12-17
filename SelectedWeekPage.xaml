@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Dagbok_JoelMarkgren.ViewModels"
+             x:DataType="vm:WeekPageViewModel"
+             x:Class="Dagbok_JoelMarkgren.SelectedWeekPage"
+             BackgroundColor="FloralWhite">
+
+
+    <Grid RowDefinitions="Auto, *, 50"
+          RowSpacing="10"
+          Padding="0,0,0,7">
+
+
+        <VerticalStackLayout BackgroundColor="ForestGreen" 
+                             Grid.ColumnSpan="2"
+                             Grid.Row="0"
+                             VerticalOptions="Center">
+
+            <HorizontalStackLayout HorizontalOptions="Center"
+                                   Padding="10"
+                                   Margin="20">
+                <Label Text="Nuvarande vecka:"
+                       FontSize="Title"
+                       Margin="0,0,10,0"/>
+                <Label Text="{Binding WeekVM.WeekNumber}"
+                       VerticalOptions="Center"
+                       FontSize="Title"
+                       HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+
+
+        </VerticalStackLayout>
+
+
+
+
+        <Editor Text="{Binding WeekVM.WeekNotes, Mode=TwoWay}"
+                Grid.Row="1"
+                AutoSize="TextChanges"
+                Placeholder="Skriv om din vecka"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="Beige"/>
+
+
+        <Grid ColumnDefinitions="*,*"
+              Grid.Column="1"
+              Grid.Row="2"
+              HorizontalOptions="Center">
+            <Button Grid.Column="0"
+                    Text="Spara"
+                    Command="{Binding SaveWeekNotesCommand}"
+                    Background="blue"
+                    WidthRequest="100"/>
+
+            <Button Grid.Column="1"
+                    Text="Rensa"
+                    Command="{Binding ClearCommand}"
+                    Background="Red"
+                    WidthRequest="100"/>
+
+        </Grid>
+    </Grid>
+
+</ContentPage>
